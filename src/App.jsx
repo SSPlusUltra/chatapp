@@ -20,10 +20,18 @@ function App() {
           flexDirection: "column",
           alignItems: "center",
           gap: "40px",
+          paddingTop: "20px",
         }}
       >
-        <div style={{ color: "white", fontSize: "23px", fontWeight: "bold" }}>
-          Kafka Demo
+        <div
+          style={{
+            color: "white",
+            fontSize: "23px",
+            fontWeight: "bold",
+            color: "orange",
+          }}
+        >
+          Kafka Chat-app
         </div>
         <div
           style={{

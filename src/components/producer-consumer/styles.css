@@ -61,6 +61,7 @@
 
 @media (max-width: 768px) {
   .parentContainer {
+    width: 768;
     flex-direction: column; /* Stack containers vertically on smaller screens */
     align-items: center; /* Center align both containers */
     height: auto; /* Remove fixed height */
@@ -68,11 +69,12 @@
     padding-right: 60px;
     padding-left: 60px;
     gap: 10px;
+    justify-content: "center";
   }
 
   .producerContainer,
   .consumerContainer {
-    width: 100%; /* Full width on smaller screens */
+    width: 400px; /* Full width on smaller screens */
     height: 400px; /* Auto height to fit content */
     margin-bottom: 20px; /* Add space between containers */
   }
