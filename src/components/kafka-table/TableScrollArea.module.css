@@ -18,3 +18,7 @@
 .scrolled {
   box-shadow: var(--mantine-shadow-sm);
 }
+
+.tableContainer {
+  width: 1100px;
+}

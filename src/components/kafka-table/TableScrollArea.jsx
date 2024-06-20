@@ -27,7 +27,7 @@ export function TableScrollArea(props) {
     );
 
   return (
-    <div style={{ width: "1100px" }}>
+    <div className="tableContainer">
       <ScrollArea
         h={300}
         onScrollPositionChange={({ y }) => setScrolled(y !== 0)}

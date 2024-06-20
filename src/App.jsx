@@ -15,6 +15,7 @@ function App() {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
       <ScrollArea
+        style={{ overflowX: "hidden" }}
         h={800}
         onScrollPositionChange={({ y }) => setScrolled(y !== 0)}
       >
