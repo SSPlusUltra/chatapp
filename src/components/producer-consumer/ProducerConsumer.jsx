@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./styles.css";
+import { TableScrollArea } from "../kafka-table/TableScrollArea";
 
-const ProducerConsumer = () => {
+const ProducerConsumer = (props) => {
   const [message, setMessage] = useState("");
   const [producedMessages, setProducedMessages] = useState([]);
   const [consumerMessages, setConsumerMessages] = useState([]);
@@ -13,9 +15,9 @@ const ProducerConsumer = () => {
       );
       // Assuming response.data is an array of messages
       const newConsumedMessage = response.data; // Assuming response.data is the returned string message
-      setTimeout(() => {
-        setConsumerMessages([...consumerMessages, newConsumedMessage]);
-      }, 1000);
+      console.log(newConsumedMessage);
+      props.onreq((prev) => [...prev, newConsumedMessage]);
+      setConsumerMessages([...consumerMessages, newConsumedMessage]);
     } catch (error) {
       console.error("Error fetching consumer messages:", error);
     }
@@ -49,40 +51,18 @@ const ProducerConsumer = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "95vh",
-        gap: "300px",
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: "white",
-          width: "500px",
-          height: "600px",
-          borderRadius: 20,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-end",
-          padding: "20px",
-        }}
-      >
-        <div style={{ marginBottom: "auto" }}>
-          Producer
-          <div style={{ maxHeight: "80%" }}>
+    <div className="parentContainer">
+      <div className="producerContainer">
+        <div style={{ color: "white", fontWeight: "bold" }}>Producer</div>
+        <div
+          style={{
+            marginBottom: "auto",
+            alignItems: "center",
+          }}
+        >
+          <div className="producerMessageContainer">
             {producedMessages.map((msg, index) => (
-              <div
-                key={index}
-                style={{
-                  padding: "10px",
-                  borderBottom: "1px solid #ccc",
-                  overflowWrap: "break-word",
-                }}
-              >
+              <div key={index} className="producerChatBubble">
                 {msg}
               </div>
             ))}
@@ -100,47 +80,36 @@ const ProducerConsumer = () => {
               border: "1px solid #ccc",
               borderRadius: "4px",
               marginRight: "10px",
+              height: "35px",
             }}
           />
           <button
             onClick={handleSendMessage}
             style={{
-              padding: "10px 20px",
               border: "none",
-              backgroundColor: "#007bff",
+              backgroundColor: "red",
               color: "#fff",
               borderRadius: "4px",
               cursor: "pointer",
+              height: "35px",
+              fontWeight: "bold",
+              paddingBottom: "30px",
+              paddingRight: "20px",
+              paddingLeft: "20px",
+              paddingTop: "4px",
             }}
           >
             Send
           </button>
         </div>
       </div>
-      <div
-        style={{
-          backgroundColor: "white",
-          width: "500px",
-          height: "600px",
-          borderRadius: 20,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
-          padding: "20px",
-        }}
-      >
+      <div className="consumerContainer">
+        <div style={{ color: "white", fontWeight: "bold" }}> Consumer</div>
         <div style={{ marginBottom: "auto" }}>
-          Consumer
-          <div style={{ maxHeight: "80%" }}>
+          <div className="consumerMessageContainer">
             {consumerMessages.map((msg, index) => (
-              <div
-                key={index}
-                style={{
-                  padding: "10px",
-                  borderBottom: "1px solid #ccc",
-                }}
-              >
-                {msg}
+              <div key={index} className="consumerChatBubble">
+                {msg.recordvalue}
               </div>
             ))}
           </div>

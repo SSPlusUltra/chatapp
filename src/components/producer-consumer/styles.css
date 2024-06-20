@@ -1,0 +1,95 @@
+.parentContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 70px;
+  height: auto;
+  gap: 100px;
+}
+
+.producerContainer,
+.consumerContainer {
+  background-color: #323232;
+  width: 500px;
+  height: 400px; /* Default height */
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: 50px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-right: 40px;
+  overflow: hidden; /* Hide any overflow from the container */
+  gap: 20px;
+}
+
+.producerMessageContainer {
+  overflow-y: auto; /* Enable vertical scrolling */
+  min-height: 100px; /* Minimum height for smaller screens */
+  max-height: 200px; /* Maximum height before scrolling appears */
+  gap: 20px;
+}
+
+.consumerMessageContainer {
+  overflow-y: auto; /* Enable vertical scrolling */
+  min-height: 100px; /* Minimum height for smaller screens */
+  max-height: 200px; /* Maximum height before scrolling appears */
+}
+
+.consumerChatBubble {
+  padding: 10px;
+  border: 2px solid #323232;
+  overflow-wrap: break-word;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #232323;
+  width: 330px;
+  color: white;
+}
+
+.producerChatBubble {
+  padding: 10px;
+  border: 2px solid #323232;
+  overflow-wrap: break-word;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #232323;
+  width: 330px;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .parentContainer {
+    flex-direction: column; /* Stack containers vertically on smaller screens */
+    align-items: center; /* Center align both containers */
+    height: auto; /* Remove fixed height */
+    padding: 20px;
+    padding-right: 60px;
+    padding-left: 60px;
+    gap: 10px;
+  }
+
+  .producerContainer,
+  .consumerContainer {
+    width: 100%; /* Full width on smaller screens */
+    height: 200px; /* Auto height to fit content */
+    margin-bottom: 20px; /* Add space between containers */
+  }
+
+  .producerMessageContainer {
+    min-height: 50px; /* Adjusted minimum height for smaller screens */
+    max-height: 150px; /* Adjusted maximum height for smaller screens */
+  }
+
+  .consumerMessageContainer {
+    min-height: 50px; /* Adjusted minimum height for smaller screens */
+    max-height: 150px; /* Adjusted maximum height for smaller screens */
+  }
+
+  .producerChatBubble,
+  .consumerChatBubble {
+    width: 300px;
+  }
+}
