@@ -29,10 +29,11 @@ export function TableScrollArea(props) {
   return (
     <div className="tableContainer">
       <ScrollArea
-        h={300}
+        h={200}
+        w={500}
         onScrollPositionChange={({ y }) => setScrolled(y !== 0)}
       >
-        <Table style={{ color: "white" }} miw={700}>
+        <Table style={{ color: "white" }} miw={400}>
           <Table.Thead
             className={cx(classes.header, { [classes.scrolled]: scrolled })}
           >

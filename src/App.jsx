@@ -13,40 +13,38 @@ function App() {
   }
 
   return (
-    <MantineProvider withGlobalStyles withNormalizeCSS>
-      <ScrollArea
-        style={{ overflowX: "hidden" }}
-        h={800}
-        onScrollPositionChange={({ y }) => setScrolled(y !== 0)}
+    <MantineProvider>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "40px",
+        }}
       >
+        <div style={{ color: "white", fontSize: "23px", fontWeight: "bold" }}>
+          Kafka Demo
+        </div>
         <div
           style={{
             display: "flex",
             flexDirection: "column",
+            gap: "20px",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          <div style={{ color: "white", fontSize: "23px", fontWeight: "bold" }}>
-            Kafka Demo
-          </div>
+          <ProducerConsumer onreq={handlereq} />
           <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-              alignItems: "center",
-            }}
+            style={{ color: "#6FC9E8", fontWeight: "bold", fontSize: "20px" }}
           >
-            <ProducerConsumer onreq={handlereq} />
-            <div
-              style={{ color: "#6FC9E8", fontWeight: "bold", fontSize: "20px" }}
-            >
-              Kafka broker live status:
-            </div>
-            <TableScrollArea reqdata={tableData} />
+            Kafka broker live status:
           </div>
         </div>
-      </ScrollArea>
+        <div style={{ paddingLeft: 50 }}>
+          <TableScrollArea reqdata={tableData} />
+        </div>
+      </div>
     </MantineProvider>
   );
 }

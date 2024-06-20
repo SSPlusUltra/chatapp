@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./styles.css";
 import { TableScrollArea } from "../kafka-table/TableScrollArea";
+import { ScrollArea } from "@mantine/core";
 
 const ProducerConsumer = (props) => {
   const [message, setMessage] = useState("");
@@ -60,13 +61,15 @@ const ProducerConsumer = (props) => {
             alignItems: "center",
           }}
         >
-          <div className="producerMessageContainer">
-            {producedMessages.map((msg, index) => (
-              <div key={index} className="producerChatBubble">
-                {msg}
-              </div>
-            ))}
-          </div>
+          <ScrollArea>
+            <div className="producerMessageContainer">
+              {producedMessages.map((msg, index) => (
+                <div key={index} className="producerChatBubble">
+                  {msg}
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
           <input
